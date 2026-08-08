@@ -26,12 +26,9 @@ jobs:
         id: build
         run: |
           make
-          chmod +x make_cia
-          ./make_cia --srl="nesDS.dsi" --id_0=$(git rev-parse --short=7 HEAD) --tikID=$(git rev-parse --short=16 HEAD)
           mkdir nesDS/
           cp nesDS.nds nesDS/
           cp nesDS.dsi nesDS/
-          cp nesDS.cia nesDS/
       - name: Publish build to GH Actions
         uses: actions/upload-artifact@v4
         with:
@@ -44,4 +41,3 @@ jobs:
           files: |
             nesDS/nesDS.nds
             nesDS/nesDS.dsi
-            nesDS/nesDS.cia
